@@ -99,7 +99,7 @@ export default function Collections() {
                   >
                     <div
                       onClick={() => setSearchParams({ category: category.name })}
-                      className="block w-full h-[500px] md:h-[650px] lg:h-[750px] cursor-pointer group relative overflow-hidden bg-black"
+                      className="block w-full h-[380px] md:h-[650px] lg:h-[750px] cursor-pointer group relative overflow-hidden bg-black"
                     >
                       <img
                         src={category.image}

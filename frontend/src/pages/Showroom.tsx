@@ -53,7 +53,7 @@ export default function Showroom() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-panel p-10 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-500"
+            className="glass-panel p-6 md:p-10 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-500"
           >
             <div className="w-16 h-16 mx-auto bg-[var(--primary)] text-[var(--accent-gold)] rounded-full flex items-center justify-center mb-6 shadow-xl">
               <MapPin size={24} strokeWidth={1.5} />
@@ -77,7 +77,7 @@ export default function Showroom() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="premium-card p-10 rounded-2xl text-center"
+            className="premium-card p-6 md:p-10 rounded-2xl text-center"
           >
             <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[var(--primary)] to-[#3A2818] text-[var(--secondary)] rounded-full flex items-center justify-center mb-6 shadow-xl">
               <Clock size={24} strokeWidth={1.5} />
@@ -100,7 +100,7 @@ export default function Showroom() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-panel p-10 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-500"
+            className="glass-panel p-6 md:p-10 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-500"
           >
             <div className="w-16 h-16 mx-auto bg-[var(--primary)] text-[var(--accent-gold)] rounded-full flex items-center justify-center mb-6 shadow-xl">
               <Phone size={24} strokeWidth={1.5} />

@@ -82,7 +82,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 mt-8 md:mt-16 max-w-5xl mx-auto flex flex-col items-center">
+        <div className="relative z-10 text-center px-4 mt-8 md:mt-16 pb-24 md:pb-8 max-w-5xl mx-auto flex flex-col items-center">
           {/* Subtle dark transparent overlay & blur behind text area only for readability */}
           <div className="absolute inset-0 bg-black/15 blur-2xl rounded-[100%] scale-[2.0] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.5)_0%,_transparent_60%)] pointer-events-none scale-[1.8]" />
@@ -102,7 +102,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
-            className="heading-cinematic text-6xl md:text-8xl lg:text-[7.5rem] mb-6 drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] leading-[1.1] relative z-10"
+            className="heading-cinematic text-4xl sm:text-6xl md:text-8xl lg:text-[7.5rem] mb-6 drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)] leading-[1.1] relative z-10"
           >
             <span className="text-[#FAF6F0] drop-shadow-[0_0_20px_rgba(250,246,240,0.25)] block mb-2">
               Timeless Elegance,
@@ -116,7 +116,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.8, 0.25, 1] }}
-            className="text-[var(--secondary)] text-lg md:text-xl max-w-2xl font-light tracking-wide mb-12 relative z-10 drop-shadow-md"
+            className="text-[var(--secondary)] text-base md:text-xl max-w-2xl font-light tracking-wide mb-8 md:mb-12 relative z-10 drop-shadow-md px-2"
           >
             Discover Maharashtra's most exclusive collection of pure silk, handwoven Paithani, and designer bridal sarees.
           </motion.p>
@@ -145,7 +145,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 hidden [@media(min-height:700px)]:flex"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 hidden md:flex"
         >
           <span className="text-[var(--accent-gold)] text-[10px] uppercase tracking-[0.3em] font-bold">Scroll to discover</span>
           <div className="w-[1px] h-16 bg-[var(--accent-gold)]/20 relative overflow-hidden">
@@ -159,13 +159,13 @@ export default function Home() {
         {/* Background glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[var(--accent-gold)]/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
         
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative"
+            className="relative overflow-hidden"
           >
             <div className="absolute -inset-4 border border-[var(--accent-gold)]/30 translate-x-4 translate-y-4 rounded-sm pointer-events-none" />
             <img 
@@ -175,8 +175,8 @@ export default function Home() {
             />
             
             {/* Experience Badge */}
-            <div className="absolute -bottom-10 -right-10 glass-panel p-8 rounded-full w-40 h-40 flex flex-col items-center justify-center shadow-xl z-20 animate-gentle-float">
-              <span className="text-4xl font-display font-bold text-[var(--primary)]">25+</span>
+            <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 glass-panel p-6 md:p-8 rounded-full w-28 h-28 md:w-40 md:h-40 flex flex-col items-center justify-center shadow-xl z-20 animate-gentle-float">
+              <span className="text-2xl md:text-4xl font-display font-bold text-[var(--primary)]">25+</span>
               <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] text-center mt-1">Years of<br/>Legacy</span>
             </div>
           </motion.div>
