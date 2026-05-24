@@ -39,7 +39,7 @@ export default function Showroom() {
               Our Flagship <span className="italic font-light" style={{ color: '#E6CCB2' }}>Showroom</span>
             </h1>
             <p className="text-lg font-light tracking-wide max-w-2xl mx-auto drop-shadow-md" style={{ color: '#FAF6F0' }}>
-              Step into a world of timeless elegance. Located in the heart of Mudshingi, our showroom is a sanctuary for authentic Indian textiles.
+              Step into a world of timeless elegance. Located in the heart of Gandhinagar, Kolhapur, our showroom is a sanctuary for authentic Indian textiles.
             </p>
           </motion.div>
         </div>

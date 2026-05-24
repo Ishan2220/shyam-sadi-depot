@@ -8,7 +8,7 @@ export const BRAND = {
   whatsapp: "918177887720",
   instagram: "https://instagram.com/shyamsadidepot",
   facebook: "https://www.facebook.com/profile.php?id=61561722380386",
-  address: "Lohiya compound main road, Opposite Gurunanak petrol pump, Mudshingi, Maharashtra 416119",
+  address: "Lohiya compound main road, Opposite Gurunanak petrol pump, Gandhinagar, Kolhapur, Maharashtra 416119",
   mapUrl: "https://www.google.com/maps/dir/?api=1&destination=16.70538117735975,74.29537049030138",
   gstin: "27ABBPC6348R1Z8",
 };
