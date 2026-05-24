@@ -1,0 +1,25 @@
+export type Product = {
+  _id?: string;
+  id?: string;
+  name: string;
+  slug: string;
+  description?: string;
+  shortDescription?: string;
+  retailPrice?: number;
+  comparePrice?: number;
+  wholesalePrice?: number;
+  category: string;
+  subcategory: string;
+  categorySlug?: string;
+  images: string[];
+  colors?: string[];
+  fabrics: string[];
+  stock: number;
+  moq?: number;
+  isTrending?: boolean;
+  isFeatured?: boolean;
+  isAvailable?: boolean;
+  rating?: number;
+  reviewCount?: number;
+  tags?: string[];
+};

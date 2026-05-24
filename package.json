@@ -1,26 +1,13 @@
 {
-  "name": "project-1",
-  "version": "0.1.0",
-  "private": true,
+  "name": "saree-depot-fullstack",
+  "version": "1.0.0",
+  "description": "Full Stack Saree Depot with Vite and Express",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend",
+    "build": "npm run build --prefix frontend"
   },
   "dependencies": {
-    "next": "16.2.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.6",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "concurrently": "^8.2.2"
   }
 }
