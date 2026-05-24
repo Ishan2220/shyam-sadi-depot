@@ -37,18 +37,18 @@ export default function Navbar() {
         initial={{ y: 0 }}
         animate={{ y: isVisible ? 0 : "-100%" }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="fixed top-0 left-0 right-0 z-50 bg-[#FAF6F0]/85 backdrop-blur-xl shadow-[0_4px_30px_rgba(74,51,32,0.05)] border-b border-[var(--primary)]/10"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#F5EDE4] backdrop-blur-xl shadow-[0_4px_30px_rgba(74,51,32,0.08)] border-b border-[var(--primary)]/10"
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between relative">
           
           {/* LEFT: Logo and Brand Name */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-4 group mr-8">
+          <Link to="/" className="flex-shrink-0 flex items-center gap-4 group mr-8 lg:relative absolute left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0">
             <img 
               src="/logo.png" 
               alt="Shyam Sadi Depot Logo" 
-              className="h-12 md:h-16 w-auto object-contain rounded-full shadow-md border border-[var(--primary)]/10 group-hover:scale-105 transition-transform duration-500" 
+              className="h-14 md:h-16 w-auto object-contain rounded-full shadow-md border border-[var(--primary)]/10 group-hover:scale-105 transition-transform duration-500" 
             />
-            <span className="text-xl md:text-2xl font-display font-bold tracking-tight text-[var(--primary)] group-hover:text-[var(--accent-gold)] transition-colors duration-500">
+            <span className="hidden lg:inline text-2xl font-display font-bold tracking-tight text-[var(--primary)] group-hover:text-[var(--accent-gold)] transition-colors duration-500">
               Shyam Sadi Depot
             </span>
           </Link>
