@@ -61,10 +61,8 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<TabKey>("products");
 
   const handleLogout = () => {
-    navigate("/");
-    setTimeout(() => {
-      logout();
-    }, 10);
+    logout();
+    navigate("/", { replace: true });
   };
 
   // ─── Product State ───
