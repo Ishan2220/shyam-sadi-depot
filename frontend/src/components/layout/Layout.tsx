@@ -43,11 +43,17 @@ export default function Layout({ children }: LayoutProps) {
                   <h2 className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--secondary)] to-[var(--accent-gold)] tracking-tight">
                     Shyam Sadi Depot
                   </h2>
+                  <h3 className="text-xl font-display font-medium text-[var(--secondary)] mt-1 tracking-wider">
+                    श्याम साडी डेपो
+                  </h3>
                   <div className="h-[1px] w-12 bg-[var(--accent-gold)] mt-4 transition-all duration-500 group-hover:w-full opacity-50" />
                 </Link>
-                <p className="text-[var(--secondary)] text-sm leading-relaxed mb-8 font-light tracking-wide">
+                <p className="text-[var(--secondary)] text-sm leading-relaxed mb-4 font-light tracking-wide">
                   Experience timeless elegance. We bring you the finest collection of authentic Indian ethnic wear, 
                   crafted with tradition and contemporary grace.
+                </p>
+                <p className="text-[var(--accent-gold)] text-xs font-semibold mb-8 tracking-wider">
+                  GST No: 27ABBPC6348R1Z8
                 </p>
                 <div className="flex gap-5">
                   <a href={BRAND.facebook} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-[var(--primary)] flex items-center justify-center text-[var(--secondary)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] hover:-translate-y-1 transition-all duration-300">

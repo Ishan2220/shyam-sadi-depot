@@ -9,7 +9,7 @@ export default function Showroom() {
       <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden bg-[#1a110a]">
         <div className="absolute inset-0">
           <img
-            src="/images/showroom_interior.png"
+            src="/images/showroom_shyam_sadi.png"
             alt="Shyam Sadi Depot Interior"
             className="w-full h-full object-cover scale-105 animate-[gentleFloat_20s_ease-in-out_infinite]"
             style={{ filter: "brightness(0.5) saturate(1.1)" }}
@@ -106,13 +106,20 @@ export default function Showroom() {
               <Phone size={24} strokeWidth={1.5} />
             </div>
             <h3 className="text-xl font-display font-bold text-[var(--primary)] mb-4">Contact Us</h3>
-            <div className="space-y-4">
-              <a href={`tel:${BRAND.phone}`} className="block text-[var(--text-muted)] text-sm hover:text-[var(--primary)] transition-colors">
-                Call: {BRAND.phone}
-              </a>
+            <div className="space-y-3">
+              <div className="text-[var(--text-muted)] text-sm flex flex-col gap-1.5">
+                <a href={`tel:${BRAND.phone}`} className="hover:text-[var(--primary)] transition-colors font-medium text-[var(--primary)]">Shop: {BRAND.phone}</a>
+                <a href="tel:9096888857" className="hover:text-[var(--primary)] transition-colors">Abhi: 9096888857</a>
+                <a href="tel:9096480078" className="hover:text-[var(--primary)] transition-colors">Rohit: 9096480078</a>
+                <a href="tel:7276666627" className="hover:text-[var(--primary)] transition-colors">Vicky: 7276666627</a>
+              </div>
+              <div className="w-full h-px bg-[var(--primary)]/10 my-2" />
               <a href={`mailto:${BRAND.email}`} className="block text-[var(--text-muted)] text-sm hover:text-[var(--primary)] transition-colors">
                 Email: {BRAND.email}
               </a>
+              <p className="block text-[var(--text-muted)] text-sm font-medium pt-1">
+                GST: 27ABBPC6348R1Z8
+              </p>
               <a 
                 href={`https://wa.me/${BRAND.whatsapp.replace(/[^0-9]/g, "")}`}
                 target="_blank" 
@@ -169,7 +176,7 @@ export default function Showroom() {
               className="relative aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
               <img 
-                src="/images/saree_2_1778669640500.png" 
+                src="/images/red_ghagra_model.png" 
                 alt="Styling session" 
                 className="w-full h-full object-cover"
               />

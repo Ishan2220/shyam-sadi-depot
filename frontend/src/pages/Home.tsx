@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Shield, Sparkles, ArrowRight, Star } from "lucide-react";
+import { Shield, Sparkles, ArrowRight, Star, Phone } from "lucide-react";
 import Reviews from "../components/Reviews";
 import { CATEGORIES } from "../lib/constants";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -159,60 +159,93 @@ export default function Home() {
         {/* Background glow */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[var(--accent-gold)]/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
         
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative overflow-hidden"
-          >
-            <div className="absolute -inset-4 border border-[var(--accent-gold)]/30 translate-x-4 translate-y-4 rounded-sm pointer-events-none" />
-            <img 
-              src="/images/showroom_interior.png" 
-              alt="Shyam Sadi Depot Showroom" 
-              className="w-full h-auto aspect-[4/5] object-cover rounded-sm shadow-2xl relative z-10"
-            />
-            
-            {/* Experience Badge */}
-            <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 glass-panel p-6 md:p-8 rounded-full w-28 h-28 md:w-40 md:h-40 flex flex-col items-center justify-center shadow-xl z-20 animate-gentle-float">
-              <span className="text-2xl md:text-4xl font-display font-bold text-[var(--primary)]">25+</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] text-center mt-1">Years of<br/>Legacy</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <span className="luxury-separator" />
-              <span className="text-[var(--accent-gold)] tracking-[0.2em] text-xs font-bold uppercase">Our Heritage</span>
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-display text-[var(--primary)] mb-8 leading-tight">
-              A Symphony of <br/><span className="italic font-light">Threads & Colors</span>
-            </h2>
-            
-            <p className="text-[var(--text-muted)] text-lg font-light leading-relaxed mb-8">
-              For over two decades, Shyam Sadi Depot has been the custodian of authentic Maharashtrian textile heritage. From the royal looms of Yeola to the intricate weaves of Kanchipuram, every saree in our showroom tells a story of unparalleled craftsmanship.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
-              <div className="glass-gold p-6 rounded-xl">
-                <Sparkles size={24} className="text-[var(--accent-gold)] mb-4" />
-                <h3 className="font-display font-bold text-xl text-[var(--primary)] mb-2">Purity Guaranteed</h3>
-                <p className="text-sm text-[var(--text-muted)]">100% authentic silk and pure zari work, certified for quality.</p>
+        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-24 lg:gap-32 relative z-10">
+          {/* Row 1: Left Image, Right First Half of Story */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative overflow-hidden"
+            >
+              <div className="absolute -inset-4 border border-[var(--accent-gold)]/30 translate-x-4 translate-y-4 rounded-sm pointer-events-none" />
+              <img 
+                src="/images/showroom_shyam_sadi.png" 
+                alt="Shyam Sadi Depot Showroom" 
+                className="w-full h-auto aspect-[4/5] object-cover rounded-sm shadow-2xl relative z-10"
+              />
+              
+              {/* Experience Badge */}
+              <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 glass-panel p-6 md:p-8 rounded-full w-28 h-28 md:w-40 md:h-40 flex flex-col items-center justify-center shadow-xl z-20 animate-gentle-float">
+                <span className="text-2xl md:text-4xl font-display font-bold text-[var(--primary)]">25+</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-muted)] text-center mt-1">Years of<br/>Legacy</span>
               </div>
-              <div className="glass-gold p-6 rounded-xl">
-                <Shield size={24} className="text-[var(--accent-gold)] mb-4" />
-                <h3 className="font-display font-bold text-xl text-[var(--primary)] mb-2">Fixed & Fair Pricing</h3>
-                <p className="text-sm text-[var(--text-muted)]">Transparent pricing policies ensuring the best value for authentic weaves.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <span className="luxury-separator" />
+                <span className="text-[var(--accent-gold)] tracking-[0.2em] text-xs font-bold uppercase">Our Heritage</span>
               </div>
-            </div>
-          </motion.div>
+              
+              <h2 className="text-4xl md:text-5xl font-display text-[var(--primary)] mb-8 leading-tight">
+                A Symphony of <br/><span className="italic font-light">Threads & Colors</span>
+              </h2>
+              
+              <p className="text-[var(--text-muted)] text-lg font-light leading-relaxed">
+                For over two decades, Shyam Sadi Depot has been the custodian of authentic Maharashtrian textile heritage. What started as a modest endeavor to bring the finest weaves to Kolhapur has blossomed into an iconic destination for generations of brides and saree connoisseurs.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Row 2: Left Second Half of Story, Right New Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="order-2 lg:order-1"
+            >
+              <p className="text-[var(--text-muted)] text-lg font-light leading-relaxed mb-8">
+                From the royal looms of Yeola to the intricate weaves of Kanchipuram, every saree in our showroom tells a story of unparalleled craftsmanship. We take pride in preserving the purity of tradition while embracing contemporary elegance, ensuring every drape you choose becomes a cherished family heirloom.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                <div className="glass-gold p-6 rounded-xl">
+                  <Sparkles size={24} className="text-[var(--accent-gold)] mb-4" />
+                  <h3 className="font-display font-bold text-xl text-[var(--primary)] mb-2">Purity Guaranteed</h3>
+                  <p className="text-sm text-[var(--text-muted)]">100% authentic silk and pure zari work, certified for quality.</p>
+                </div>
+                <div className="glass-gold p-6 rounded-xl">
+                  <Shield size={24} className="text-[var(--accent-gold)] mb-4" />
+                  <h3 className="font-display font-bold text-xl text-[var(--primary)] mb-2">Fixed & Fair Pricing</h3>
+                  <p className="text-sm text-[var(--text-muted)]">Transparent pricing policies ensuring the best value for authentic weaves.</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative overflow-hidden order-1 lg:order-2"
+            >
+              <div className="absolute -inset-4 border border-[var(--accent-gold)]/30 -translate-x-4 translate-y-4 rounded-sm pointer-events-none" />
+              <img 
+                src="/images/party_wear.png" 
+                alt="Party Wear Collection" 
+                className="w-full h-auto aspect-[4/5] object-cover rounded-sm shadow-2xl relative z-10"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -349,6 +382,12 @@ export default function Home() {
               >
                 Chat with Owner
               </a>
+            </div>
+            
+            <div className="mt-12 flex flex-wrap justify-center gap-6 text-[var(--secondary)]/80 text-sm font-light">
+              <span className="flex items-center gap-2"><Phone size={14} className="text-[var(--accent-gold)]" /> Abhi: 9096888857</span>
+              <span className="flex items-center gap-2"><Phone size={14} className="text-[var(--accent-gold)]" /> Rohit: 9096480078</span>
+              <span className="flex items-center gap-2"><Phone size={14} className="text-[var(--accent-gold)]" /> Vicky: 7276666627</span>
             </div>
           </motion.div>
         </div>
