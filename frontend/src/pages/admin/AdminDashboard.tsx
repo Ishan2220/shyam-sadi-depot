@@ -21,6 +21,7 @@ import {
   Eye,
   EyeOff,
   MessageSquare,
+  KeyRound,
 } from "lucide-react";
 
 type Product = {
@@ -52,7 +53,7 @@ type Review = {
   isVisible: boolean;
 };
 
-type TabKey = "products" | "reviews";
+type TabKey = "products" | "reviews" | "settings";
 
 export default function AdminDashboard() {
   const { isAuthenticated, user, logout } = useAdminAuth();
@@ -105,6 +106,15 @@ export default function AdminDashboard() {
     rating: 5,
     isVisible: true,
   });
+
+  // ─── Change Password State ───
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [passwordForm, setPasswordForm] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
 
   // ─── Toast ───
   const [toast, setToast] = useState<{
@@ -398,10 +408,44 @@ export default function AdminDashboard() {
     </div>
   );
 
+  // ─── Change Password Handler ───
+  const handleChangePassword = async () => {
+    if (!passwordForm.currentPassword || !passwordForm.newPassword || !passwordForm.confirmPassword) {
+      showToast("Please fill all fields", "error");
+      return;
+    }
+    if (passwordForm.newPassword.length < 6) {
+      showToast("New password must be at least 6 characters", "error");
+      return;
+    }
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      showToast("New passwords do not match", "error");
+      return;
+    }
+
+    setIsChangingPassword(true);
+    try {
+      await api.post("/api/auth/change-password", {
+        email: user?.email,
+        currentPassword: passwordForm.currentPassword,
+        newPassword: passwordForm.newPassword,
+      });
+      showToast("Password changed successfully!", "success");
+      setIsPasswordModalOpen(false);
+      setPasswordForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
+    } catch (err: any) {
+      const msg = err.response?.data?.error || "Failed to change password";
+      showToast(msg, "error");
+    } finally {
+      setIsChangingPassword(false);
+    }
+  };
+
   // ─── Tab Configuration ───
   const tabs: { key: TabKey; label: string; icon: React.ReactNode }[] = [
     { key: "products", label: "Products", icon: <Package size={16} /> },
     { key: "reviews", label: "Reviews", icon: <MessageSquare size={16} /> },
+    { key: "settings", label: "Settings", icon: <KeyRound size={16} /> },
   ];
 
   return (
@@ -723,6 +767,76 @@ export default function AdminDashboard() {
           </>
         )}
 
+        {/* ════════════════════════════════════════ */}
+        {/* SETTINGS TAB */}
+        {/* ════════════════════════════════════════ */}
+        {activeTab === "settings" && (
+          <>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+              <div>
+                <h2 className="text-4xl font-display font-bold text-[var(--primary)]">Account Settings</h2>
+                <p className="text-gray-500 max-w-md mt-2">
+                  Manage your admin account security and preferences.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Change Password Card */}
+              <div className="bg-white rounded-2xl border border-[#e5e1da] p-8 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)]">
+                    <KeyRound size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-display font-bold text-[var(--primary)]">Change Password</h3>
+                    <p className="text-sm text-gray-400">Update your admin login password</p>
+                  </div>
+                </div>
+                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                  Keep your account secure by updating your password regularly. Your new password must be at least 6 characters long.
+                </p>
+                <button
+                  onClick={() => {
+                    setPasswordForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
+                    setIsPasswordModalOpen(true);
+                  }}
+                  className="flex items-center justify-center gap-2 px-6 py-3.5 bg-[var(--primary)] text-white rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg"
+                >
+                  <KeyRound size={16} /> CHANGE PASSWORD
+                </button>
+              </div>
+
+              {/* Account Info Card */}
+              <div className="bg-white rounded-2xl border border-[#e5e1da] p-8 shadow-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)]">
+                    <Shield size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-display font-bold text-[var(--primary)]">Account Info</h3>
+                    <p className="text-sm text-gray-400">Your admin account details</p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Name</span>
+                    <span className="text-sm font-bold text-[var(--primary)]">{user?.name || "Administrator"}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Email</span>
+                    <span className="text-sm font-bold text-[var(--primary)]">{user?.email || "—"}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Role</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-green-50 text-green-600">Super Admin</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
       </div>
 
       {/* ════════════════════════════════════════ */}
@@ -1030,6 +1144,97 @@ export default function AdminDashboard() {
               </button>
               <button
                 onClick={() => setIsReviewModalOpen(false)}
+                className="flex-1 py-4 bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 rounded-full font-bold text-sm transition-all flex items-center justify-center"
+              >
+                CANCEL
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ════════════════════════════════════════ */}
+      {/* Change Password Modal */}
+      {/* ════════════════════════════════════════ */}
+      {isPasswordModalOpen && (
+        <div className="fixed inset-0 z-[200] flex items-end md:items-center justify-center p-0 md:p-4">
+          <div
+            className="absolute inset-0 bg-[var(--primary)]/80 backdrop-blur-sm"
+            onClick={() => setIsPasswordModalOpen(false)}
+          />
+          <div className="relative flex flex-col bg-white w-full max-w-md h-auto max-h-[90vh] rounded-t-3xl md:rounded-3xl shadow-2xl animate-in slide-in-from-bottom duration-500">
+            {/* Header */}
+            <div className="flex-none px-8 py-6 border-b border-gray-100 flex items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-display font-bold">Change Password</h3>
+                <p className="text-xs font-bold text-[var(--primary)] uppercase tracking-[0.2em] mt-1">
+                  Update your credentials
+                </p>
+              </div>
+              <button
+                onClick={() => setIsPasswordModalOpen(false)}
+                className="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center hover:bg-gray-100"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Form Body */}
+            <div className="flex-1 overflow-y-auto p-8 space-y-6">
+              <div>
+                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Current Password *</label>
+                <input
+                  type="password"
+                  value={passwordForm.currentPassword}
+                  onChange={(e) => setPasswordForm({ ...passwordForm, currentPassword: e.target.value })}
+                  placeholder="Enter your current password"
+                  className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-[var(--primary)] focus:bg-white rounded-xl outline-none transition-all font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">New Password *</label>
+                <input
+                  type="password"
+                  value={passwordForm.newPassword}
+                  onChange={(e) => setPasswordForm({ ...passwordForm, newPassword: e.target.value })}
+                  placeholder="Enter new password (min 6 chars)"
+                  className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-[var(--primary)] focus:bg-white rounded-xl outline-none transition-all font-medium"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Confirm New Password *</label>
+                <input
+                  type="password"
+                  value={passwordForm.confirmPassword}
+                  onChange={(e) => setPasswordForm({ ...passwordForm, confirmPassword: e.target.value })}
+                  placeholder="Re-enter new password"
+                  className="w-full px-6 py-4 bg-gray-50 border-2 border-transparent focus:border-[var(--primary)] focus:bg-white rounded-xl outline-none transition-all font-medium"
+                />
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="flex-none bg-white p-6 md:p-8 border-t border-gray-100 rounded-b-3xl flex gap-4">
+              <button
+                onClick={handleChangePassword}
+                disabled={isChangingPassword}
+                className="flex-[2] py-4 bg-[var(--primary)] text-white rounded-full font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isChangingPassword ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    UPDATING...
+                  </>
+                ) : (
+                  <>
+                    <KeyRound size={20} /> UPDATE PASSWORD
+                  </>
+                )}
+              </button>
+              <button
+                onClick={() => setIsPasswordModalOpen(false)}
                 className="flex-1 py-4 bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 rounded-full font-bold text-sm transition-all flex items-center justify-center"
               >
                 CANCEL

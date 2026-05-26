@@ -82,7 +82,7 @@ export default function Home() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 mt-8 md:mt-16 pb-24 md:pb-8 max-w-5xl mx-auto flex flex-col items-center">
+        <div className="relative z-10 text-center px-4 mt-8 md:mt-16 pb-32 md:pb-32 max-w-5xl mx-auto flex flex-col items-center">
           {/* Subtle dark transparent overlay & blur behind text area only for readability */}
           <div className="absolute inset-0 bg-black/15 blur-2xl rounded-[100%] scale-[2.0] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.5)_0%,_transparent_60%)] pointer-events-none scale-[1.8]" />
@@ -145,10 +145,10 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 hidden md:flex"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
         >
-          <span className="text-[var(--accent-gold)] text-[10px] uppercase tracking-[0.3em] font-bold">Scroll to discover</span>
-          <div className="w-[1px] h-16 bg-[var(--accent-gold)]/20 relative overflow-hidden">
+          <span className="text-[var(--accent-gold)] text-[10px] uppercase tracking-[0.3em] font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Scroll to discover</span>
+          <div className="w-[1px] h-12 bg-[var(--accent-gold)]/30 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1/2 bg-[var(--accent-gold)] animate-[slideUp_2s_ease-in-out_infinite]" />
           </div>
         </motion.div>
