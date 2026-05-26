@@ -59,8 +59,10 @@ export default function AdminDashboard() {
   const { isAuthenticated, user, logout } = useAdminAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabKey>("products");
+  const loggingOut = useRef(false);
 
   const handleLogout = () => {
+    loggingOut.current = true;
     logout();
     navigate("/", { replace: true });
   };
@@ -178,7 +180,8 @@ export default function AdminDashboard() {
   }, [isAuthenticated, activeTab, fetchReviews, reviews.length]);
 
   if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
+    // If we're in the middle of logging out, go to home; otherwise go to admin login
+    return <Navigate to={loggingOut.current ? "/" : "/admin/login"} replace />;
   }
 
   // ─── Product Handlers ───
